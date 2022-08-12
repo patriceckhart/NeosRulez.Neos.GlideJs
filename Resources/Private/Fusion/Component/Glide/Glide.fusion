@@ -1,0 +1,66 @@
+prototype(NeosRulez.Neos.GlideJs:Component.Glide) < prototype(Neos.Fusion:Component) {
+
+    identifier = false
+    content = false
+    renderUl = true
+
+    type = ${q(node).property('type') ? q(node).property('type') : 'carousel'}
+    startAt = ${q(node).property('startAt') ? q(node).property('startAt') : '0'}
+    perView = ${q(node).property('perView') ? q(node).property('perView') : '1'}
+    focusAtCenter = ${q(node).property('focusAtCenter') ? q(node).property('focusAtCenter') : 'false'}
+    focusAt = ${q(node).property('focusAt') ? q(node).property('focusAt') : '1'}
+    gap = ${q(node).property('gap') ? q(node).property('gap') : '10'}
+    autoplay = ${q(node).property('autoplay') ? q(node).property('autoplay') : 'true'}
+    hoverpause = ${q(node).property('hoverpause') ? q(node).property('hoverpause') : 'true'}
+    keyboard = ${q(node).property('keyboard') ? q(node).property('keyboard') : 'true'}
+    bound = ${q(node).property('bound') ? q(node).property('bound') : 'false'}
+    swipeThreshold = ${q(node).property('swipeThreshold') ? q(node).property('swipeThreshold') : '80'}
+    dragThreshold = ${q(node).property('dragThreshold') ? q(node).property('dragThreshold') : '120'}
+    perTouch = ${q(node).property('perTouch') ? q(node).property('perTouch') : '0'}
+    touchRatio = ${q(node).property('touchRatio') ? q(node).property('touchRatio') : '0.5'}
+    touchAngle = ${q(node).property('touchAngle') ? q(node).property('touchAngle') : '45'}
+    animationDuration = ${q(node).property('animationDuration') ? q(node).property('animationDuration') : '400'}
+    rewind = ${q(node).property('rewind') ? q(node).property('rewind') : 'false'}
+    rewindDuration = ${q(node).property('rewindDuration') ? q(node).property('rewindDuration') : '800'}
+    animationTimingFunc = ${q(node).property('animationTimingFunc') ? q(node).property('animationTimingFunc') : 'cubic-bezier(0.165, 0.840, 0.440, 1.000)'}
+    direction = ${q(node).property('direction') ? q(node).property('direction') : 'ltr'}
+    peek = ${q(node).property('peek') ? q(node).property('peek') : '0'}
+
+    renderer = afx`
+        <Neos.Fusion:Fragment @if.render={props.identifier && props.content} >
+            <div class={'glide glide-' + props.identifier} >
+                <div class="glide__track" data-glide-el="track">
+                    <ul @if.render={props.renderUl} class="glide__slides">
+                        {props.content}
+                    </ul>
+                    {!props.renderUl ? props.content : false}
+                </div>
+            </div>
+            <script>{"
+                new Glide('.glide-" + props.identifier + "', {
+                    type: '" + props.type +"',
+                    startAt: " + props.startAt + ",
+                    perView: " + props.perView + ",
+                    focusAtCenter: " + (props.focusAtCenter ? 'true' : 'false') + ",
+                    focusAt: " + props.focusAt + ",
+                    gap: " + props.gap + ",
+                    autoplay: " + (props.autoplay ? 'true' : 'false') + ",
+                    hoverpause: " + (props.hoverpause ? 'true' : 'false') + ",
+                    keyboard: " + (props.keyboard ? 'true' : 'false') + ",
+                    bound: " + (props.bound ? 'true' : 'false') + ",
+                    swipeThreshold: " + props.swipeThreshold + ",
+                    dragThreshold: " + props.dragThreshold + ",
+                    perTouch: " + props.perTouch + ",
+                    touchRatio: " + props.touchRatio + ",
+                    touchAngle: " + props.touchAngle + ",
+                    animationDuration: " + props.animationDuration + ",
+                    rewind: " + (props.rewind ? 'true' : 'false') + ",
+                    rewindDuration: " + props.rewindDuration + ",
+                    animationTimingFunc: '" + props.animationTimingFunc + "',
+                    direction: '" + props.direction + "',
+                    peek: " + props.peek + "
+                }).mount()
+            "}</script>
+        </Neos.Fusion:Fragment>
+    `
+}

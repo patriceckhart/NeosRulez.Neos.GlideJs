@@ -1,0 +1,23 @@
+Neos:
+  Neos:
+    fusion:
+      autoInclude:
+        NeosRulez.Neos.GlideJs: true
+#    userInterface:
+#      translation:
+#        autoInclude:
+#          NeosRulez.SlickCarousel:
+#            - 'NodeTypes/*'
+#      defaultLanguage: 'de'
+    nodeTypes:
+      groups:
+        glideJs:
+          position: 'end'
+          label: 'Glide.js'
+NeosRulez:
+  Neos:
+    GlideJs:
+      GlideSlideItem:
+        image:
+          width: 2560
+          height: 1440

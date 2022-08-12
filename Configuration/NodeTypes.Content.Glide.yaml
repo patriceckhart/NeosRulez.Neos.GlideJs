@@ -1,0 +1,9 @@
+'NeosRulez.Neos.GlideJs:Content.Glide':
+  superTypes:
+    'Neos.Neos:Content': true
+    'NeosRulez.Neos.GlideJs:ContentCollection': true
+    'NeosRulez.Neos.GlideJs:Mixin.GlideOptions': true
+  ui:
+    label: Glide Slider
+    icon: fas fa-images
+    group: glideJs

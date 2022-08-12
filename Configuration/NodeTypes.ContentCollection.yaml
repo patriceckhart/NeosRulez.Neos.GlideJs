@@ -1,0 +1,14 @@
+'Neos.Neos:ContentCollection':
+  constraints:
+    nodeTypes:
+      'NeosRulez.Neos.GlideJs:Content.GlideSlide': false
+
+'NeosRulez.Neos.GlideJs:ContentCollection':
+  abstract: true
+  superTypes:
+    'Neos.Neos:ContentCollection': true
+  constraints:
+    nodeTypes:
+      '*': false
+      'Neos.Neos:Content': false
+      'NeosRulez.Neos.GlideJs:Content.GlideSlide': true

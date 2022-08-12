@@ -1,0 +1,7 @@
+.glide__slide { position: relative; }
+.glide__slide .glide__slide__caption { position: absolute; width:100%; height:100%; z-index:2; }
+.glide__slide .glide__slide__caption .neos-contentcollection { position: relative; height:100%; display:flex; }
+.glide__slide .glide__slide__caption .neos-contentcollection.top { flex-direction: column; justify-content: start; }
+.glide__slide .glide__slide__caption .neos-contentcollection.center { flex-direction: column; justify-content: center; }
+.glide__slide .glide__slide__caption .neos-contentcollection.bottom { flex-direction: column; justify-content: end; }
+.glide__slide .glide__slide__image { position: relative; height:100%; z-index:1; }

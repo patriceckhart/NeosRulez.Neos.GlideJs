@@ -1,0 +1,18 @@
+prototype(NeosRulez.Neos.GlideJs:Content.Glide) < prototype(Neos.Neos:ContentComponent) {
+
+    glideSlides = Neos.Neos:ContentCollection {
+        @context.node = ${node}
+        tagName = 'ul'
+        attributes {
+            class = 'glide__slides'
+        }
+    }
+
+    identifier = ${node.identifier}
+
+    renderer = afx`
+        <NeosRulez.Neos.GlideJs:Component.Glide identifier={props.identifier} renderUl={false} >
+            {props.glideSlides}
+        </NeosRulez.Neos.GlideJs:Component.Glide>
+    `
+}

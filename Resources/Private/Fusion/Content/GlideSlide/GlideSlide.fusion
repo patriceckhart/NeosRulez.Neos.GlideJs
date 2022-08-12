@@ -1,0 +1,26 @@
+prototype(NeosRulez.Neos.GlideJs:Content.GlideSlide) < prototype(Neos.Neos:ContentComponent) {
+
+    nodes = Neos.Neos:ContentCollection {
+        @context.node = ${node}
+        attributes {
+            class = ${(q(node).property('verticalAlignment') == 'top' ? 'top' : (q(node).property('verticalAlignment') == 'center' ? 'center' : (q(node).property('verticalAlignment') == 'bottom' ? 'bottom' : false)))}
+        }
+    }
+
+    identifier = ${node.identifier}
+    inBackend = ${site.context.inBackend}
+    image = ${q(node).property('image')}
+    width = ${Configuration.setting('NeosRulez.Neos.GlideJs.GlideSlideItem.image.width') ? Configuration.setting('NeosRulez.Neos.GlideJs.GlideSlideItem.image.width') : 2560}
+    height = ${Configuration.setting('NeosRulez.Neos.GlideJs.GlideSlideItem.image.height') ? Configuration.setting('NeosRulez.Neos.GlideJs.GlideSlideItem.image.height') : 1440}
+
+    renderer = afx`
+        <li id={'glide_slide_' + props.identifier} class="glide__slide">
+            <div @if.render={props.inBackend || (!props.inBackend && props.image)} class="glide__slide__caption">
+                {props.nodes}
+            </div>
+            <div @if.render={props.image} class="glide__slide__image">
+                <Neos.Neos:ImageTag asset={props.image} width={props.width} height={props.height} allowCropping={true} allowUpScaling={true} async={true} attributes.width={props.width} attributes.height={props.height} />
+            </div>
+        </li>
+    `
+}

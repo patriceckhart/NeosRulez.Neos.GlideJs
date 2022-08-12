@@ -1,0 +1,217 @@
+'NeosRulez.Neos.GlideJs:Mixin.GlideOptions':
+  abstract: true
+  ui:
+    inspector:
+      groups:
+        glideJs:
+          label: Glide.js
+          icon: fas fa-images
+  properties:
+    type:
+      type: string
+      defaultValue: 'carousel'
+      ui:
+        label: Type of the movement
+        reloadPageIfChanged: true
+        inspector:
+          group: glideJs
+          position: 1
+          editor: Neos.Neos/Inspector/Editors/SelectBoxEditor
+          editorOptions:
+            values:
+              'carousel':
+                label: Carousel
+              'slider':
+                label: Slider
+    startAt:
+      type: string
+      defaultValue: '0'
+      ui:
+        label: Start at specific slide number defined with zero-based index.
+        reloadPageIfChanged: true
+        inspector:
+          group: glideJs
+          position: 2
+    perView:
+      type: string
+      defaultValue: '1'
+      ui:
+        label: A number of slides visible on the single viewport.
+        reloadPageIfChanged: true
+        inspector:
+          group: glideJs
+          position: 3
+    focusAtCenter:
+      type: boolean
+      defaultValue: false
+      ui:
+        label: Current slide will be always focused at the center of a track.
+        reloadPageIfChanged: true
+        inspector:
+          group: glideJs
+          position: 4
+    focusAt:
+      type: string
+      defaultValue: '1'
+      ui:
+        label: Focus currently active slide at a specified position in the track.
+        reloadPageIfChanged: true
+        inspector:
+          hidden: 'ClientEval:node.properties.focusAtCenter ? false : true'
+          group: glideJs
+          position: 5
+    gap:
+      type: string
+      defaultValue: '10'
+      ui:
+        label: A size of the gap added between slides.
+        reloadPageIfChanged: true
+        inspector:
+          group: glideJs
+          position: 6
+    autoplay:
+      type: boolean
+      defaultValue: true
+      ui:
+        label: Change slides after a specified interval. Use false for turning off autoplay.
+        reloadPageIfChanged: true
+        inspector:
+          group: glideJs
+          position: 7
+    hoverpause:
+      type: boolean
+      defaultValue: true
+      ui:
+        label: Stop autoplay on mouseover event.
+        reloadPageIfChanged: true
+        inspector:
+          group: glideJs
+          position: 8
+    keyboard:
+      type: boolean
+      defaultValue: true
+      ui:
+        label: Allow for changing slides with left and right keyboard arrows.
+        reloadPageIfChanged: true
+        inspector:
+          group: glideJs
+          position: 9
+    bound:
+      type: boolean
+      defaultValue: false
+      ui:
+        label: Stop running perView number of slides from the end. Use this option if you don't want to have an empty space after a slider.
+        reloadPageIfChanged: true
+        inspector:
+          group: glideJs
+          position: 10
+    swipeThreshold:
+      type: string
+      defaultValue: '80'
+      ui:
+        label: Minimal swipe distance needed to change the slide. Use false for turning off a swiping.
+        reloadPageIfChanged: true
+        inspector:
+          group: glideJs
+          position: 11
+    dragThreshold:
+      type: string
+      defaultValue: '120'
+      ui:
+        label: Minimal swipe distance needed to change the slide. Use false for turning off a swiping.
+        reloadPageIfChanged: true
+        inspector:
+          group: glideJs
+          position: 12
+    perTouch:
+      type: string
+      defaultValue: '0'
+      ui:
+        label: A maximum number of slides to which movement will be made on swiping or dragging. Use false for unlimited.
+        reloadPageIfChanged: true
+        inspector:
+          group: glideJs
+          position: 13
+    touchRatio:
+      type: string
+      defaultValue: '0.5'
+      ui:
+        label: Alternate moving distance ratio of the slides on a swiping and dragging.
+        reloadPageIfChanged: true
+        inspector:
+          group: glideJs
+          position: 14
+    touchAngle:
+      type: string
+      defaultValue: '45'
+      ui:
+        label: Angle required to activate slides moving on swiping or dragging.
+        reloadPageIfChanged: true
+        inspector:
+          group: glideJs
+          position: 14
+    animationDuration:
+      type: string
+      defaultValue: '400'
+      ui:
+        label: Duration of the animation in milliseconds.
+        reloadPageIfChanged: true
+        inspector:
+          group: glideJs
+          position: 14
+    rewind:
+      type: boolean
+      defaultValue: false
+      ui:
+        label: Allows looping the slider type. Slider will rewind to the first/last slide when it's at the start/end.
+        reloadPageIfChanged: true
+        inspector:
+          hidden: 'ClientEval:node.properties.type == "carousel" ? true : false'
+          group: glideJs
+          position: 15
+    rewindDuration:
+      type: string
+      defaultValue: '800'
+      ui:
+        label: Duration of the rewinding animation of the slider type in milliseconds.
+        reloadPageIfChanged: true
+        inspector:
+          hidden: 'ClientEval:node.properties.type == "carousel" ? true : false'
+          group: glideJs
+          position: 16
+    animationTimingFunc:
+      type: string
+      defaultValue: 'cubic-bezier(0.165, 0.840, 0.440, 1.000)'
+      ui:
+        label: Easing function for the animation.
+        reloadPageIfChanged: true
+        inspector:
+          hidden: 'ClientEval:node.properties.type == "carousel" ? true : false'
+          group: glideJs
+          position: 17
+    direction:
+      type: string
+      defaultValue: 'ltr'
+      ui:
+        label: Moving direction mode.
+        reloadPageIfChanged: true
+        inspector:
+          group: glideJs
+          position: 18
+          editor: Neos.Neos/Inspector/Editors/SelectBoxEditor
+          editorOptions:
+            values:
+              'ltr':
+                label: 'Left to right movement'
+              'rtl':
+                label: 'Right to left movement'
+    peek:
+      type: string
+      defaultValue: '0'
+      ui:
+        label: The distance value of the next and previous viewports which have to peek in the current view. Accepts number and pixels as a string. Left and right peeking can be setup separately with a directions object.
+        reloadPageIfChanged: true
+        inspector:
+          hidden: 'ClientEval:node.properties.type == "carousel" ? true : false'
+          group: glideJs
+          position: 19

@@ -1,0 +1,48 @@
+prototype(Neos.Neos:Page) {
+    @context.glideJsIsUsed = ${q(documentNode).find('[instanceof NeosRulez.Neos.GlideJs:Content.Glide]').get()}
+    head {
+        glideCoreCss = Neos.Fusion:Tag {
+            @position = 'start'
+            tagName = 'link'
+            attributes {
+                rel = 'stylesheet'
+                href = Neos.Fusion:ResourceUri {
+                    path = 'resource://NeosRulez.Neos.GlideJs/Public/glide.core.min.css'
+                }
+            }
+            @if.render = ${glideJsIsUsed ? true : false}
+        }
+        glideThemeCss = Neos.Fusion:Tag {
+            @position = 'after glideCoreCss'
+            tagName = 'link'
+            attributes {
+                rel = 'stylesheet'
+                href = Neos.Fusion:ResourceUri {
+                    path = 'resource://NeosRulez.Neos.GlideJs/Public/glide.theme.min.css'
+                }
+            }
+            @if.render = ${glideJsIsUsed ? true : false}
+        }
+        glideOverrideCss = Neos.Fusion:Tag {
+            @position = 'after glideThemeCss'
+            tagName = 'link'
+            attributes {
+                rel = 'stylesheet'
+                href = Neos.Fusion:ResourceUri {
+                    path = 'resource://NeosRulez.Neos.GlideJs/Public/glide.override.css'
+                }
+            }
+            @if.render = ${glideJsIsUsed ? true : false}
+        }
+        glideJs = Neos.Fusion:Tag {
+            @position = 'after glideThemeCss'
+            tagName = 'script'
+            attributes {
+                src = Neos.Fusion:ResourceUri {
+                    path = 'resource://NeosRulez.Neos.GlideJs/Public/glide.min.js'
+                }
+            }
+            @if.render = ${glideJsIsUsed ? true : false}
+        }
+    }
+}

@@ -1,0 +1,45 @@
+'NeosRulez.Neos.GlideJs:Content.GlideSlide':
+  superTypes:
+    'Neos.Neos:Content': true
+    'Neos.Neos:ContentCollection': true
+  ui:
+    label: Glide Slider Item
+    icon: fas fa-image
+    group: glideJs
+    inspector:
+      groups:
+        glideJs:
+          label: Glide.js
+          icon: fas fa-image
+  properties:
+    image:
+      type: Neos\Media\Domain\Model\ImageInterface
+      ui:
+        label: Image
+        reloadPageIfChanged: true
+        inspector:
+          group: glideJs
+          position: 1
+          editorOptions:
+            features:
+              mediaBrowser: true
+              crop: true
+              resize: false
+    verticalAlignment:
+      type: string
+      defaultValue: 'center'
+      ui:
+        label: Vertical alignment
+        reloadPageIfChanged: true
+        inspector:
+          group: glideJs
+          position: 2
+          editor: Neos.Neos/Inspector/Editors/SelectBoxEditor
+          editorOptions:
+            values:
+              'top':
+                label: Top
+              'center':
+                label: Center
+              'bottom':
+                label: Bottom
